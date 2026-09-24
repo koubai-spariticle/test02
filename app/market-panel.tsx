@@ -31,7 +31,7 @@ export default function MarketPanel() {
       const quote = data?.quotes.find(q => q.id === instrument.id);
       return <section className="market-quote" key={instrument.id} aria-label={instrument.name}>
         <h3>{instrument.label}</h3><p className="market-name">{instrument.name}</p>
-        <p className="market-value">{quote?.value ?? (loading ? '読み込み中…' : '—')}<span>{quote?.value ? '円' : ''}</span></p>
+        <p className="market-value">{quote?.value ?? (loading ? '読み込み中…' : '—')}<span>{quote?.value ? instrument.unit : ''}</span></p>
         {quote?.change !== null && quote?.change !== undefined && <p className={'market-change ' + quote.direction}>変動 {quote.change}{quote.changePercent !== null ? ` (${quote.changePercent}%)` : ''}</p>}
         <p className="market-time">{quote?.time ? `配信元：${quote.time}` : loading ? '日経から取得しています' : '現在取得できません'}</p>
       </section>;

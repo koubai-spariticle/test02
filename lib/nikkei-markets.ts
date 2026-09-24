@@ -1,9 +1,10 @@
 export const MARKET_SOURCE_URL = 'https://www.nikkei.com/marketdata/global-overview/';
-export const MARKET_FEED_URL = 'https://www.nikkei.com/marketdata/api/global-overview/indicatorValue/?indexes=NK225&currencies=USDJPY%2CEURJPY';
+export const MARKET_FEED_URL = 'https://www.nikkei.com/marketdata/api/global-overview/indicatorValue/?indexes=NK225&currencies=USDJPY%2CEURJPY%2CUSDCNY';
 export const MARKET_INSTRUMENTS = [
-  { id: 'USDJPY', label: 'USD/JPY', name: '米ドル／円', group: 'currencies', code: 'XJPY/7' },
-  { id: 'EURJPY', label: 'EUR/JPY', name: 'ユーロ／円', group: 'currencies', code: 'XEURJPY/7' },
-  { id: 'NK225', label: '日経平均', name: '日経平均株価', group: 'indexes', code: 'N101/T' },
+  { id: 'USDJPY', label: 'USD/JPY', name: '米ドル／円', unit: '円', group: 'currencies', code: 'XJPY/7' },
+  { id: 'EURJPY', label: 'EUR/JPY', name: 'ユーロ／円', unit: '円', group: 'currencies', code: 'XEURJPY/7' },
+  { id: 'USDCNY', label: 'USD/CNY', name: '米ドル／人民元', unit: '人民元', group: 'currencies', code: 'XCNY/TLTL' },
+  { id: 'NK225', label: '日経平均', name: '日経平均株価', unit: '円', group: 'indexes', code: 'N101/T' },
 ] as const;
 export type MarketQuote = { id: string; label: string; name: string; value: string | null; time: string | null; change: string | null; changePercent: string | null; direction: 'up' | 'down' | 'flat'; };
 export type MarketResponse = { quotes: MarketQuote[]; checkedAt: string; sourceUrl: string };
