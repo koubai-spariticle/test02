@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,7 +21,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Script id="gbase-chatbot-config" strategy="beforeInteractive">
+          {`window.gptbaseConfig = {
+            chatbotId: '791af1a9-b938-45a3-878a-d8004600f4c6',
+            baseUrl: 'https://admin.gbase.ai',
+            apiBaseUrl: 'https://admin.gbase.ai/api',
+          };`}
+        </Script>
+        <Script
+          src="https://gbase.ai/plugin/plugin.js"
+          id="791af1a9-b938-45a3-878a-d8004600f4c6"
+          strategy="afterInteractive"
+          defer
+        />
+      </body>
     </html>
   );
 }
